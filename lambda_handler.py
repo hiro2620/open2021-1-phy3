@@ -41,13 +41,12 @@ class Transition:
 
 
 class LambdaHandler:
-    def __init__(self, frame_duration, transit_frame_duration, base_lambda=1) -> None:
+    def __init__(self, frame_duration, transit_frame_duration, base_lambda=1, mns=[(1, 0)]) -> None:
         self.duration = frame_duration
         self.transit_duration = transit_frame_duration
         self.base_lambda = base_lambda
-        self.mns = [
-            (1, 0), (1, 1), (2, 0), (2, 1), (2, 2), (3, 0), (3, 1), (3, 2)
-        ]
+        self.mns = mns
+        assert len(self.mns) > 0
         self.current_mn = self.mns[0]
         self.last_update_frame = 0
         self.transition = None

@@ -86,7 +86,7 @@ class Animator(object):
 
     def plot(self, t) -> Figure:
         logger.info(f'frame={t}')
-        logger.info(f'freq={self.wave_freq}')
+        logger.info(f'freq={self.wave_freq * self.fps}')
 
         gr = self.grid_range
         gi = self.grid_interval

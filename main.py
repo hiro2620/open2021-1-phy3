@@ -9,11 +9,15 @@ from lambda_handler import LambdaHandler
 basicConfig(level=INFO)
 logger = getLogger(__name__)
 
+mns = [(1, 0), (1, 1), (2, 0), (2, 1), (2, 2),
+       (3, 0), (3, 1), (3, 2), (3, 3), (4, 1)]
+
 
 class CustomAnimator(Animator):
     def __init__(self, wave_source_points, **kwargs) -> None:
         super().__init__(wave_source_points=wave_source_points, **kwargs)
-        self.lambda_handler = LambdaHandler(self.fps * 2, self.fps * 0.5)
+        self.lambda_handler = LambdaHandler(
+            self.fps * 2.5, self.fps * 1.1, mns=mns)
         self.lambda_desc = None
 
     def get_lambda(self) -> float:
@@ -32,9 +36,9 @@ def main() -> None:
     wave_sources = [i for i in product(range(-1, 2), repeat=2)]
     assert len(wave_sources) == 9
 
-    animator = CustomAnimator(wave_sources, fps=30, time_duration=24, grid_range=6, wave_v=0.2)
-    animator.save(path="anim.mp4")
-
+    animator = CustomAnimator(wave_sources, fps=30,
+                              time_duration=25, grid_range=6, wave_v=0.2)
+    animator.save(path="anim100.mp4")
 
 
 if __name__ == "__main__":
