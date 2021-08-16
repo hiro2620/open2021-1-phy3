@@ -70,7 +70,7 @@ class LambdaHandler:
                 stop = la(*self.current_mn)
                 self.transition = Transition(
                     start, stop, self.transit_duration)
-                logger.info(f"lambda was updated (m,n)={self.current_mn}")
+                logger.info(f"lambda has been updated (m,n)={self.current_mn}")
 
             self.last_update_frame = frame
 

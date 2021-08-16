@@ -38,7 +38,7 @@ def main() -> None:
 
     animator = CustomAnimator(wave_sources, fps=30,
                               time_duration=25, grid_range=6, wave_v=0.2)
-    animator.save(path="anim100.mp4")
+    animator.save(path="anim.mp4")
 
 
 if __name__ == "__main__":
